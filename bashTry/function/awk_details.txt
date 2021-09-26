@@ -1,0 +1,25 @@
+$ cat sample.txt 
+%Cpu(s):  8.5 us,  4.2 sy,  0.0 ni, 73.2 id, 14.1 wa,  0.0 hi,  0.0 si,  0.0 st
+
+$ awk '{print $3}' sample.txt 
+us,
+
+$ awk '{print $2}' sample.txt 
+8.5
+
+$ awk '{print $4}' sample.txt 
+4.2
+
+$ awk '{print $0}' sample.txt 
+%Cpu(s):  8.5 us,  4.2 sy,  0.0 ni, 73.2 id, 14.1 wa,  0.0 hi,  0.0 si,  0.0 st
+
+$ top -bn1 | awk '/Cpu/ {print $0}'
+%Cpu(s):  9.1 us,  3.9 sy,  0.0 ni, 87.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+
+$ top -bn1 | awk '/Cpu/ {print $1}'
+%Cpu(s):
+
+$ top -bn1 | awk '/Cpu/ {print $2}'
+5.1
+
+

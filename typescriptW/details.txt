@@ -1,0 +1,7 @@
+Nodejs Command Line Arguments
+
+const args = process.argv;
+console.log(args);
+
+$ node server.js one two=three four
+['node', '/home/server.js', 'one', 'two=three', 'four']
