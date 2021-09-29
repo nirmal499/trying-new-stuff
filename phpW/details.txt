@@ -1,0 +1,10 @@
+1. php -S localhost:port_number
+
+2. localhost opened on that port_number treats the directory where it was
+started as the main directory. So, what ever file there is the main directory
+, you can access it in localhost:port_number/your_file.php
+
+3. Suppose there is a file named as 'file_name_1.php' , then you can access it using 
+localhost:port_number/file_name_1.php . This can only happen if you have placed the
+file_name_1.php in the main directory [ The main directory is the directory from where you have
+    launched the localhost:port_number using the command shown in point 1 ]
