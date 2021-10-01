@@ -6,3 +6,16 @@ extra
 sample_file.txt
 *.out
 test.php
+
+
+# These are for the gradle project
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore the bin folder
+bin
+
+.vscode
