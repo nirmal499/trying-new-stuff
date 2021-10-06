@@ -73,7 +73,10 @@ echo " Year: " . $car->year . PHP_EOL;
 //$car->wipers = 90;
 echo $car->wipers . PHP_EOL;
 
-/* We can see that we are able to do method overloading -> Polymorphism */
+/*
+Here we are creating runtime METHOD 
+We can see that we are able to do method overloading -> Polymorphism 
+*/
 $car->honk();
 $car->honk('gently');
 $car->honk('louder', 'siren');

@@ -26,13 +26,13 @@ class Magic
     }
 
     /* These special functions must be public
-        These are for creating runtime method
+        These are for creating runtime METHOD
     */
     public function __call($methodName, $arguments)
     {
         echo "Runtime method created" . PHP_EOL;
         var_dump($arguments);
-        /* By doing this we can allow calling specific method */
+        /* By doing this we can allow calling specific METHOD */
         switch ($methodName) {
             case 'magicShow1':
                 if (isset($arguments[0])) {
@@ -53,7 +53,7 @@ class Magic
 
     public static function __callStatic($methodName, $arguments)
     {
-        echo "Runtime static method created" . PHP_EOL;
+        echo "Runtime static method named as $methodName() created" . PHP_EOL;
         var_dump($arguments);
     }
 }

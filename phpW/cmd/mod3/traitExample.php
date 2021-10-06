@@ -12,6 +12,9 @@ trait T
 {
     public function say()
     {
+        /* This 'parent' specifies the parent of the class where this
+            Trait will be used
+        */
         parent::say();
         echo ' Trait';
     }

@@ -39,11 +39,12 @@ $count = 0; //This is Global Variable
 countByReference($count);
 countByReference($count);
 countByReference($count);
+/* It is good practice to not access GLOBAL VARIBALE directly */
 echo "The global count value is : $count" . PHP_EOL;
 
 /* ---------------------------------------------------------------------- */
 
-$callable0 = function (float $value): int {
+$callable = function (float $value): int {
     if (0 <= $value) {
         return 1;
     }
@@ -58,6 +59,13 @@ $callable1 = function () use ($a) {
 };
 $a = 'different';
 
+/* Outputs 15
+
+The reason for this is that when using
+use to import $a into the scope of the function, $a will be used exactly as it was at
+the time of function creation.
+
+*/
 echo $callable1() . PHP_EOL;
 
 $b = 15;

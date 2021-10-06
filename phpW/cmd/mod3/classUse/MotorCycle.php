@@ -32,7 +32,7 @@ class MotorCycle extends AbstractVehicle implements DriveInterface
         }
     }
 
-    /* Method Overriding 
+    /* Method OVERRIDING
         Imagine there is a discount of 5% on all kinds of motorcycles for a special occasion
     */
     function getPrice()

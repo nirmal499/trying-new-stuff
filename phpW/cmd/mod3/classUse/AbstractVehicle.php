@@ -63,8 +63,8 @@ abstract class AbstractVehicle
     }
 
     /* This constructor is for derived class
-        With this contructor AbstractVehicle class should never be
-        instantiated
+        Keep in mind that with this contructor AbstractVehicle class should never be
+        instantiated since it an abstract class
     */
     function __construct(
         string $make = 'DefaultMake',
