@@ -19,3 +19,7 @@ build
 bin
 
 .vscode
+
+# PHP uploads directory
+*.jpeg
+*jpg
