@@ -1,0 +1,32 @@
+1. The server will start in 'web' directory and not in the parent directory (/app)
+
+web/index.php: This is the server document root containing the single entry point file for HTTP
+requests. Every file in 'web' directory can be accessed through the server
+
+index.php: This file is responsible for accepting all HTTP requests and producing and
+returning HTTP responses; it includes all the necessary script files of the application
+and runs specific tasks to achieve its purpose (for example, returning the HTTP
+response).
+
+2. The 'src' directory contains the business logic and presentation files of the
+application; This directory is not exposed to WWW; however, the scripts will run for each request, since they are included in web/index.php,
+which means that they are indirectly exposed to user input
+
+3. src/components/{Router.php,Template.php}
+
+Router.php: The Router component is responsible for picking a handler (that is, a class
+name) to instantiate and returning it. Essentially, it will match a URI path to a handler
+class (for example, /login will result in returning the \Handlers\Login instance)
+
+Template.php: The Template component is responsible for loading and rendering a
+template from the 'templates' directory and returning the HTML content.
+
+4. src/handlers
+
+This directory contains the scripts with classes that will process the HTTP request
+and will generate response data. This directory has an abstract Handler class that
+implements some common functionality, which will be extended by actual handlers.
+The previously listed handlers are meant to cover the authentication (Login.php), secure
+the profile page, log out of any session (Logout.php), and protect the profile page display
+(Profile.php)
+
