@@ -8,3 +8,5 @@ started as the main directory. So, what ever file there is the main directory
 localhost:port_number/file_name_1.php . This can only happen if you have placed the
 file_name_1.php in the main directory [ The main directory is the directory from where you have
     launched the localhost:port_number using the command shown in point 1 ]
+
+4. phpuser@localhost -> 4K2#f%[&u!+5M[M{ -> phpdb,bootstrapdb
