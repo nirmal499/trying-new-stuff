@@ -4,13 +4,21 @@ declare(strict_types=1);
 
 namespace Handlers;
 
+use Components\Auth;
+use Components\Database;
+use Components\Template;
+
 class Login extends Handler
 {
     public function handle(): string
     {
         /* If $_SESSION has 'username' key  */
-        if (isset($_SESSION['username'])) {
-            $this->requestRedirect('/');
+        // if (isset($_SESSION['username'])) {
+        //     $this->requestRedirect('/');
+        //     return '';
+        // }
+        if (Auth::userIsAuthenticated()) {
+            $this->requestRedirect('/profile');
             return '';
         }
         /* ---------------------------------------------------------------------------------------------------- */
@@ -28,52 +36,74 @@ class Login extends Handler
 
         /* -------------------------------------------------------------------------------------------------------- */
 
+        //     $formError = [];
+        //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //         $formUsername = $_POST['username'] ?? '';
+        //         $formPassword = $_POST['password'] ?? '';
+        //         $userData = $this->getUserData($formUsername);
+        //         if (!$userData) {
+        //             $formError = ['username' => sprintf('The username [%s] was not found.', $formUsername)];
+        //         } elseif (!password_verify($formPassword, $userData['password'])) {
+        //             $formError = ['password' => 'The provided password is invalid.'];
+        //         } else {
+        //             $_SESSION['username'] = $formUsername;
+        //             $_SESSION['userData'] = $userData;
+
+        //             /* A \ before the beginning of a function represents the Global Namespace.
+        //                 Putting it there will ensure that the function called is from the global namespace,
+        //                 even if there is a function by the same name in the current namespace */
+        //             //$_SESSION['loginTime'] = date(\DATE_COOKIE);
+
+        //             $this->requestRedirect('/profile');
+        //             return '';
+        //         }
+        //     }
+
+        //     /* Here the render function returns the whole processed html name 'login-form' */
+        //     return (new \Components\Template('login-form'))->render([
+        //         'formError' => $formError,
+        //         'formUsername' => $formUsername ?? ''
+        //     ]);
+        // }
+
+        // private function getUserData(string $username): ?array
+        // {
+        //     $users = [
+        //         'vip' => [
+        //             'level' => 'VIP',
+        //             'password' => password_hash('vip', PASSWORD_BCRYPT), // "vip" password hash
+        //         ],
+        //         'user' => [
+        //             'level' => 'STANDARD',
+        //             'password' => password_hash('user', PASSWORD_BCRYPT), // "user" password hash
+        //         ],
+        //         'admin' => [
+        //             'level' => 'ADMIN',
+        //             'password' => password_hash('admin', PASSWORD_BCRYPT),
+        //         ]
+        //     ];
+        //     return $users[$username] ?? null;
+        // }
+
         $formError = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (count($_POST)) {
             $formUsername = $_POST['username'] ?? '';
             $formPassword = $_POST['password'] ?? '';
-            $userData = $this->getUserData($formUsername);
-            if (!$userData) {
+            $user = Database::instance()->getUserByUsername($formUsername);
+            if (!$user) {
                 $formError = ['username' => sprintf('The username [%s] was not found.', $formUsername)];
-            } elseif (!password_verify($formPassword, $userData['password'])) {
+            } elseif (!$user->passwordMatches($formPassword)) {
                 $formError = ['password' => 'The provided password is invalid.'];
             } else {
-                $_SESSION['username'] = $formUsername;
-                $_SESSION['userData'] = $userData;
-
-                /* A \ before the beginning of a function represents the Global Namespace.
-                    Putting it there will ensure that the function called is from the global namespace,
-                    even if there is a function by the same name in the current namespace */
-                //$_SESSION['loginTime'] = date(\DATE_COOKIE);
-
+                Auth::authenticate((int)$user->getId());
                 $this->requestRedirect('/profile');
                 return '';
             }
         }
 
-        /* Here the render function returns the whole processed html name 'login-form' */
-        return (new \Components\Template('login-form'))->render([
+        return (new Template('login-form'))->render([
             'formError' => $formError,
             'formUsername' => $formUsername ?? ''
         ]);
-    }
-
-    private function getUserData(string $username): ?array
-    {
-        $users = [
-            'vip' => [
-                'level' => 'VIP',
-                'password' => password_hash('vip', PASSWORD_BCRYPT), // "vip" password hash
-            ],
-            'user' => [
-                'level' => 'STANDARD',
-                'password' => password_hash('user', PASSWORD_BCRYPT), // "user" password hash
-            ],
-            'admin' => [
-                'level' => 'ADMIN',
-                'password' => password_hash('admin', PASSWORD_BCRYPT),
-            ]
-        ];
-        return $users[$username] ?? null;
     }
 }

@@ -22,6 +22,11 @@ abstract class Handler
         /* This will change location of header, i.e. redirect to the URL */
     }
 
+    public function requestRefresh()
+    {
+        $this->requestRedirect($_SERVER['REQUEST_URI']);
+    }
+
     public function willRedirect(): bool
     {
         return strlen($this->redirectUri) > 0;
