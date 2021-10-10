@@ -1,0 +1,15 @@
+{
+    "name": "nbaskey/guzzle_example",
+    "description": "Simple example of guzzle",
+    "type": "project",
+    "authors": [
+        {
+            "name": "nkb",
+            "email": "nkb@example.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}
