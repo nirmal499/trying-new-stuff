@@ -1,0 +1,21 @@
+{
+    "name": "nkb/composer-example",
+    "description": "A simple example of using composer functionality",
+    "type": "project",
+    "authors": [
+        {
+            "name": "nkb",
+            "email": "nkb@example.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "monolog/monolog": "^2.3",
+        "ramsey/uuid": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "CompanyName\\":"src/CompanyName/"
+        }
+    }
+}
