@@ -23,3 +23,6 @@ bin
 # PHP uploads directory
 *.jpeg
 *jpg
+
+# PHP vendor
+vendor
