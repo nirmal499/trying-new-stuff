@@ -1,0 +1,3 @@
+2021-10-10T09:53:46+05:30 :: Undefined variable: width, in [/home/nbaskey/Desktop/cpp_c_py_rust_js_dev/workshop/phpW/cmd/mod6/log_handler.php] on line [18] (error code 8)
+2021-10-10T09:53:46+05:30 :: Undefined variable: height, in [/home/nbaskey/Desktop/cpp_c_py_rust_js_dev/workshop/phpW/cmd/mod6/log_handler.php] on line [18] (error code 8)
+2021-10-10T09:53:46+05:30 :: Division by zero, in [/home/nbaskey/Desktop/cpp_c_py_rust_js_dev/workshop/phpW/cmd/mod6/log_handler.php] on line [18] (error code 2)
