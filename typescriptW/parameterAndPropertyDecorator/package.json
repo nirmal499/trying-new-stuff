@@ -1,0 +1,11 @@
+{
+  "name": "parameterAndPropertyDecorator",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "run":"tsc"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
