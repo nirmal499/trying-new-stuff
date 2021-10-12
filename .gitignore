@@ -30,3 +30,4 @@ vendor
 # Ignore node_modules and all .js files
 node_modules
 *.js
+outputJS
