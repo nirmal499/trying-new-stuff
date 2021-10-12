@@ -5,7 +5,7 @@ Test.java
 extra
 sample_file.txt
 *.out
-test.php
+test.*
 
 
 # These are for the gradle project
@@ -26,3 +26,6 @@ bin
 
 # PHP vendor
 vendor
+
+# Ignore node_modules
+node_modules
