@@ -5,3 +5,8 @@ console.log(args);
 
 $ node server.js one two=three four
 ['node', '/home/server.js', 'one', 'two=three', 'four']
+
+When you pass in files for compilation with tsc src/index.ts, your tsconfig.json is ignored.
+From the documentation:
+When input files are specified on the command line, tsconfig.json files are ignored.
+Your npm build script should just be tsc without passing any files

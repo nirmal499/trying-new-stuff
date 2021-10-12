@@ -1,0 +1,16 @@
+{
+  "name": "classesAndObjects",
+  "version": "1.0.0",
+  "main": "src/auth.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jasmine-ts --config=jasmine.json"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.9.1",
+    "jasmine": "^3.9.0",
+    "jasmine-ts": "^0.4.0",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.3"
+  }
+}
