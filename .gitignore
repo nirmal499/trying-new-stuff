@@ -27,5 +27,6 @@ bin
 # PHP vendor
 vendor
 
-# Ignore node_modules
+# Ignore node_modules and all .js files
 node_modules
+*.js
