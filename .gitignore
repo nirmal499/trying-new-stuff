@@ -31,3 +31,7 @@ vendor
 node_modules
 *.js
 outputJS
+
+# Ignore the C++ binary files and object files
+*.out
+*.o
