@@ -1,0 +1,25 @@
+If we run the server and try to request a few greetings simultaneously, you'll notice
+that they each wait for the previous request to complete before starting requesting
+the data for the current one. We can simulate a few concurrent requests by calling
+fetch multiple times, without waiting for the previous request to finish first:
+http://localhost:{3000 or 4000}/john
+http://localhost:{3000 or 4000}/jane
+
+server1.ts:
+Jane had to wait for John's request to finish (5 seconds in this case)
+before the server even started handling her request. The total time to greet both
+users was 10 seconds. Can you imagine what would happen in a real server, serving
+hundreds or more requests at the same time
+
+server2.ts:
+As you can see, the server started handing John's request first, since that's the first
+one to arrive, but then immediately switched to handling Jane's request while waiting
+for John's greeting to be ready. When John's greeting was ready 5 seconds later, the
+server sent the greeting back, and then waited for Jane's greeting to be ready a few
+milliseconds later and sent that to her
+
+To conclude, the same flow as before now took 5 seconds to respond to both users
+instead of the 10 seconds from before. In addition, most of that time was spent idle
+– waiting to receive more requests to handle. This is instead of the flow prior to the
+callbacks, where the server was stuck and wasn't able to answer any requests for the
+majority of the time.

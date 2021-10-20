@@ -1,0 +1,15 @@
+{
+  "name": "mod9",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "first": "../run.sh src/server1",
+    "second": "../run.sh src/server2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.1"
+  },
+  "dependencies": {}
+}
