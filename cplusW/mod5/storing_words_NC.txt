@@ -1,0 +1,42 @@
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+class word
+{
+    /* A friend class can access private and protected members of other class in which it is declared as friend.
+        It is sometimes useful to allow a particular class to access private members of other class. 
+        Friendship is not mutual. If class A is a friend of B, then B doesn’t become a friend of A automatically
+        Friendship is not inherited.
+        It means class line can access private and protected of the class word.
+    */
+    friend class line;
+    unique_ptr<char[]> ptr_;
+    int letters_;
+    int spaces_;
+    word *next_;
+
+public:
+    /* char const *srcp means the array of characters srcp is pointing must not be changed
+        since it is declared const. srcp itself can be changed to point to some other stuff
+     */
+    word(char const *srcp, int letters, int spaces);
+    void to_string(char *dstp);
+    int size();
+};
+
+word::word(char const *srcp, int letters, int spaces)
+    : ptr_(make_unique<char[]>(letters + 1)),
+      letters_(letters), spaces_(spaces)
+{
+    char *dstp = nullptr;
+    /* dstp = ptr_.get(); Return the stored pointer to dstp.
+        So array of size letters+1 is now pointed by ptr_ and dstp
+      */
+    for (dstp = ptr_.get(); letters > 0; --letters)
+    {
+        *dstp++ = *srcp++;
+    }
+    *dstp = '\0';
+}
