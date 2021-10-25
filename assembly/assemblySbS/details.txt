@@ -19,3 +19,72 @@ the loop began. So within the same loop, the program is counting up along
 the length of Snippet in EBX, while counting down in EAX. When EAX goes
 to zero, it means that we’ve gone through all of the characters in Snippet, and
 we’re done
+
+3. uppercase1.asm
+
+Buff has no initial value, and contains nothing until we read a character from stdin and store it there
+
+When a call to sys_read returns a 0, sys_read has reached the end of the
+file it’s reading from. If it returns a positive value, this value is the number
+of characters it has read from the file. In this case, since we only requested
+one character, sys_read returns either a count of 1, or a 0 indicting that
+we’re out of characters.
+
+The CMP instruction compares its two operands and sets the flags accordingly. The conditional jump instruction that follows each CMP instruction
+takes action based on the state of the flags
+
+The JB (Jump If Below) instruction jumps if the preceding CMP’s left
+operand is lower in value than its right operand
+
+The JA (Jump If Above) instruction jumps if the preceding CMP’s left
+operand is higher in value than its right operand.
+
+./uppercaser1.out < inputfile > outputfile
+
+Navigating within the buffer involves two registers. The address of the
+beginning of the buffer is placed in EBP. The number of characters in the
+buffer is placed in the ECX register. If you add the two registers, you’ll get
+the address of the last character in the buffer. If you decrement the character
+counter in ECX, the sum of EBP and ECX will point to the second-to-last
+character in the buffer. Each time you decrement ECX, you’ll have the address
+to a character one closer to the start of the buffer. When ECX is decremented
+to zero, you’ll be at the beginning of the buffer, and all the characters will have
+been processed
+
+There’s a bug in the pseudo-code, and it’s
+one of the commonest beginner bugs in all assembly language: the legendary
+‘‘off by one’’ error. The sum of EBP and ECX will point one address past the
+end of the buffer. And when the count in ECX goes to zero, one character—the
+one at the very beginning of the buffer—will remain unexamined and (if it’s
+lowercase) untouched. The easiest way to explain where this bug comes from
+is to draw it out, as I’ve done in Figure 8-7
+
+The solution is simple: decrement the address of the buffer (which is stored
+in EBP) by 1 before beginning the scan. EBP now points to the memory location
+immediately before the first character in the buffer. With EBP set up this way,
+we can use the count value in ECX as both a count and an offset. By the time
+the value in ECX is decremented to 0, we’ve processed the ‘‘g’’ character, and
+we exit the loop
+
+Purists may think that decrementing the address in EBP before the loop
+begins is a dicey hack. They’re half-right: after being decremented, EBP points
+to a location in memory outside the bounds of the buffer. If the program
+tried to write to that location, another variable might be corrupted, or a
+segmentation fault might result. THE LOGIC OF THE LOOP DOESN'T REQUIRE WRITING TO THAT
+PARTICULAR ADDRESS, BUT IT COULD EASILY BE DONE BY MISTAKE.
+
+The ‘‘proper’’ way to handle the off-by-one error is to leave EBP pointing at
+the true start of the buffer, and decrement ECX at the beginning of the loop,
+rather than the end. Testing ECX against 0 must still be done, but at the end
+of the loop, with a separate CMP instruction. This works fine, and the pointer
+always points to memory locations within Buff:
+However, this comes at a cost: there is one more instruction inside the loop
+than there used to be. It doesn’t matter much when you’re only going to go
+through the loop a small number of times. But it’s good practice to keep your
+loops as tight as possible, by not using any more instructions inside a loop
+than absolutely necessary. Even tiny slices of time add up, and if the loop will
+need to run thousands, tens of thousands, or millions of times, execution could
+slow down noticeably.
+
+So, in uppercaser1 we will be going with the first solution where decrement the address of the 
+buffer (which is stored in EBP) by 1 before beginning the scan
