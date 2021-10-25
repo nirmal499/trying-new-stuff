@@ -1,0 +1,21 @@
+1. i386 architecture
+
+nasm -f elf -g -F stabs _____.asm
+ld -m elf_i386 -o name_of_executable.out ______.o
+
+2. kangaroo.asm:
+Earlier in the program, we copied the memory address of Snippet into register EBX. The
+ADD instruction adds the literal value 32 to whatever number is at the address
+stored in BX. If you look at Appendix B, you’ll notice that the difference
+between the value of ASCII uppercase letters and ASCII lowercase letters is 32.
+A capital ‘‘K’’ has the value 4Bh, and a lowercase ‘‘k’’ has the value 6Bh. 6Bh
+− 4Bh is 20h, which in decimal is 32, so if we treat ASCII letters as numbers,
+we can add 32 to an uppercase letter and transform it into a lowercase letter.
+The loop makes eight passes, one for each letter in ‘‘KANGAROO.’’ After
+each ADD, the program increments the address in EBX, which puts the next
+character of ‘‘KANGAROO’’ in the crosshairs. It also decrements EAX, which
+had been loaded with the number of characters in the variable Snippet before
+the loop began. So within the same loop, the program is counting up along
+the length of Snippet in EBX, while counting down in EAX. When EAX goes
+to zero, it means that we’ve gone through all of the characters in Snippet, and
+we’re done
