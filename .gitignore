@@ -1,6 +1,7 @@
 BloodPressureCheck
 WordToolDoc
 Test.java
+class_files
 *.class
 extra
 sample_file.txt
