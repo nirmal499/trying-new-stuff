@@ -1,3 +1,5 @@
+package mod1;
+
 public class MultipleOccurrence {
     public static void main(String[] args) {
         String textToBeSearched = "so";

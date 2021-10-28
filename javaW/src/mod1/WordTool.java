@@ -1,3 +1,5 @@
+package mod1;
+
 /**
  * <H1>WordTool</H1> A class to perform calculations about text. For generating
  * use : $javadoc Your_java_file.java

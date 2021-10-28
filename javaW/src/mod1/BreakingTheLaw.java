@@ -1,3 +1,5 @@
+package mod1;
+
 public class BreakingTheLaw {
 
     static class MyException extends Exception {

@@ -1,3 +1,5 @@
+package mod1;
+
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.logging.Level;

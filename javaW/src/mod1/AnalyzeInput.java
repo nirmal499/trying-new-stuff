@@ -1,5 +1,6 @@
-import java.util.*;
+package mod1;
 
+import java.util.*;
 import java.io.Console;
 
 class Datapoint {

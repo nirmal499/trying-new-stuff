@@ -1,3 +1,5 @@
+package mod1;
+
 import java.util.*;
 
 public class RandomAverage {
