@@ -1,0 +1,12 @@
+Download java connector from https://www.mysql.com/products/connector/
+username -> javauser . password -> euySNxaEE$f9~2RK
+GRANT ALL PRIVILEGES ON jdbc.* TO 'javauser'@'localhost';
+
+To run:
+
+Make sure the mysql.service is running
+./run.sh mod2/jdbcQuery /usr/share/java/mysql-connector-java-8.0.27.jar
+
+
+loadProperties.java
+./run.sh mod2/loadProperties "" user2.properties name=Nirmal familyName=Kumar userName=niru age=89 bgColor=#000003

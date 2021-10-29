@@ -1,0 +1,32 @@
+1. server.java
+
+./run.sh mod3/server "" 8080
+
+This will start a server a localhost or 127.0.0.1:8080. So, server is now
+listening on port 8080. Any data recieved using 'in' which is basically 
+sent by the client will be processed[ means that data will be added with
+the current date] and this whole processed data will be sent back using 'out' as a response to socket from where the client
+sent the resquest.
+
+2. client.java
+
+./run.sh mod3/client "" 127.0.0.1 8080
+
+Here now the client is started , whatever you type is collected using 'stdIn' and then
+that collected line is sent as a resquest using 'out' to the server
+listening at port 8080 and then the server sents back a response which is read by 'in' and that
+read response by 'in' will be shown output in the terminal[client terminal]
+
+
+Remember that you need to start the server before you start the client
+Also, when forcing an exit on the client, it will force an exit on the server.
+
+
+The java.io read and write operations are blocking. This means that the
+program will wait until the data is fully read or until the data has been fully written.
+However, working with buffered streams as implemented in java.nio allows you to
+check whether the data is ready to be read. When writing data, java.nio will copy the
+data to the buffer and let the API write the data to the channel by itself. This allows an
+entirely different programming style where we don't need to wait for the operations
+to happen. At the same time, this means that we will not have low-level control of the
+communication. A different part of the JVM performs that action for us.
