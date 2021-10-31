@@ -1,4 +1,6 @@
 
+To run mod9:
+
 To compile all the java files inside mod9
 Make sure the your current directory is mod9
 javac **/*.java -d ../class_files
@@ -6,3 +8,6 @@ javac **/*.java -d ../class_files
 After that you can run compiled file by
 Assuming that you are in the mod9 directory
 java -cp ../class_files file_name_to_run
+
+
+To run mod10 , do the same thing as mentioned for mod9
