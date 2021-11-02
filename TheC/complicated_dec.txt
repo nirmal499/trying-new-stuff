@@ -1,0 +1,14 @@
+1. char **argv
+argv: pointer to pointer to char
+
+2. int (*daytab)[13]
+daytab: pointer to array[13] of int
+
+3. int *daytab[13]
+daytab: array[13] of pointer to int
+
+4. void *comp()
+comp: function returning pointer to void
+
+5. void (*comp)()
+comp: pointer to function returning void
