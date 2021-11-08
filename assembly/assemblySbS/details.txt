@@ -88,3 +88,8 @@ slow down noticeably.
 
 So, in uppercaser1 we will be going with the first solution where decrement the address of the 
 buffer (which is stored in EBP) by 1 before beginning the scan
+
+
+
+'ToFollow' directory contains all the assembly which follow the GNU way to write assembly
+1. eatclib.asm not working
