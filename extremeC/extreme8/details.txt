@@ -1,0 +1,15 @@
+AGGREGATION:
+Aggregation also involves a container object that contains another object. The
+main difference is that in aggregation, the lifetime of the contained object is
+independent of the lifetime of the container object.
+In aggregation, the contained object could be constructed even before the
+container object is constructed. This is opposite to composition, in which the
+contained object should have a lifetime shorter than or equal to the container
+object
+
+
+$ gcc -c gun.c -o gun.o
+$ gcc -c player.c -o player.o
+$ gcc -c main.c -o main.o
+$ gcc gun.o player.o main.o -o main.out
+$ ./main.out

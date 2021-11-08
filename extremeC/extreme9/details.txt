@@ -1,0 +1,28 @@
+If you were to dig deeper and see what an inheritance relationship really is,
+you would find out that it is really a composition relationship in its nature. For
+example, we can say that a student has a person's nature inside of them. In other
+words, we can suppose that there is a private person object inside the Student
+class's attribute structure. That is, an inheritance relationship can be equivalent
+to a one-to-one composition relationship
+
+Therefore, you have two approaches for implementing the inheritance
+relationship:
+1. Make it so that the child class has access to the private implementation
+(actual definition) of the base class.
+2. Make it so that the child class only has access to the public interface of
+the base class.
+
+First Approach:
+In this the Student class needs to have access to the actual private definition 
+of the Person class's attribute structure.
+
+person_p.h:
+This a private header file is an ordinary header file that is supposed to be included
+and used by a certain part of code or a certain class that actually needs it.
+
+
+$ gcc -c person.c -o person.o
+$ gcc -c student.c -o student.o
+$ gcc -c main.c -o main.o
+$ gcc person.o student.o main.o -o main.out
+$ ./main.out

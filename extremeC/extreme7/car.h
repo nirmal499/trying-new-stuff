@@ -1,6 +1,7 @@
 #ifndef EXTREME_7_CAR
 #define EXTREME_7_CAR
 
+/* This is the public interface of the Car class*/
 struct car_t;
 
 /* Memory allocator */

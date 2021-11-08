@@ -1,0 +1,11 @@
+Using the first approach, we kept a structure variable as the first field in the
+child's attribute structure. Now, using the second approach, we'll keep a pointer
+to the parent's structure variable. This way, the child class can be independent
+of the implementation of the parent class, which is a good thing, considering
+information-hiding concerns.
+
+$ gcc -c person.c -o person.o
+$ gcc -c student.c -o student.o
+$ gcc -c main.c -o main.o
+$ gcc person.o student.o main.o -o main.out
+$ ./main.out

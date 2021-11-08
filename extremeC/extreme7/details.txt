@@ -1,0 +1,31 @@
+We can see that the car's private implementation is consuming the engine's public interface.
+This means that the car itself doesn't know anything about the implementation
+details of the engine. This is the way that it should be.
+
+Two objects that are not of the same type, in most cases, must not know about each
+other's implementation details. This is what information hiding dictates. Remember
+that the car's behaviors are considered external to the engine.
+
+This way, we can replace the implementation of the engine with an alternative
+one, and it should work, as long as the new implementation provides definitions
+for the same public functions declared in the engine's header file
+
+$ gcc -c engine.c -o engine.o
+$ gcc -c car.c -o car.o
+$ gcc -c main.c -o main.o
+$ gcc engine.o car.o main.o -o main.out
+$ ./main.out
+
+
+COMPOSITION:
+As the term "composition" implies, when an object contains or possesses another
+object – in other words, it is composed of another object – we say that there is
+a composition relationship between them.
+As an example, a car has an engine; a car is an object that contains an engine
+object. Therefore, the car and engine objects have a composition relationship.
+There is an important condition that a composition relationship must have: the
+lifetime of the contained object is bound to the lifetime of the container object.
+As long as the container object exists, the contained object must exist. But when
+the container object is about to get destroyed, the contained object must have
+been destructed first. This condition implies that the contained object is often
+internal and private to the container

@@ -1,0 +1,30 @@
+Polymorphism simply means to have different behaviors by just using the same
+public interface (or set of behavior functions).
+Suppose that we have two classes, Cat and Duck , and they each have a behavior
+function, sound , which makes them print their specific sound
+
+We have three classes, Animal , Cat , and Duck , and Cat and Duck are subtypes
+of Animal . Each class has one header and one source. The Animal class has
+an extra private header file that contains the actual definition of its attribute
+structure. This private header is required since we are taking the first approach
+to implement inheritance. The private header is going to be used by the Cat and
+Duck classes.
+
+The Animal class has two behavior functions. The animal_sound function is
+supposed to be polymorphic and can be overridden by the child classes, while
+the other behavior function, animal_get_name , is not polymorphic, and children
+cannot override it.
+
+In polymorphism, every child class can provide its own version of the animal_
+sound function. In other words, every child class can override the function
+inherited from its parent class. Therefore, we need to have a different function
+for each child class that wants to override it. This means, if the child class has
+overridden the animal_sound , its own overridden function should be called.
+
+That's why we are using function pointers here. Each instance of animal_t will
+have a function pointer dedicated to the behavior animal_sound , and that pointer
+is pointing to the actual definition of the polymorphic function inside the class
+
+main.c:
+We create three objects. We assumed that both the Cat and
+Duck classes are children of the Animal class
