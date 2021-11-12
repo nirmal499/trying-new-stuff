@@ -1,0 +1,6 @@
+# Ignore
+*.css
+*.css.map
+
+# Allow
+!*.jpg
