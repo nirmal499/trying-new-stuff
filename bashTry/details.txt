@@ -1,3 +1,8 @@
+./exists 1,2,3 4,5,6
+$# is 2
+
+########################################################################################################################
+
 e.g . FileName is : r.sh
 
 echo "params only 2    : ${@:2:1}"
@@ -24,3 +29,47 @@ echo $1 $2
 shifttest.sh 1 2 3 produces
 1
 2 3
+
+########################################################################################################################
+
+The special shell variable IFS determines how Bash recognizes word boundaries while splitting a sequence of character strings. The default value of IFS is a three-character string comprising a space, tab, and newline
+
+$ echo "$IFS" | cat -et
+ ^I$
+$
+$ string="foo bar foo:bar"
+$ for i in $string; do echo "[$i] extracted"; done
+[foo] extracted
+[bar] extracted
+[foo:bar] extracted
+$ IFS=":"  && echo "$IFS" | cat -et
+:$
+$ for i in $string; do echo "[$i] extracted"; done
+[foo bar foo] extracted
+[bar] extracted
+$ unset IFS  && echo "$IFS" | cat -et
+$
+$ for i in $string; do echo "[$i] extracted"; done
+[foo] extracted
+[bar] extracted
+[foo:bar] extracted
+
+########################################################################################################################
+
+$ myArray=("1st item" "2nd item" "3rd item" "4th item")
+$ printf 'Word -> %s\n' ${myArray[@]} # word splitting based on $IFS
+Word -> 1st
+Word -> item
+Word -> 2nd
+Word -> item
+Word -> 3rd
+Word -> item
+Word -> 4th
+Word -> item
+$ printf 'Word -> %s\n' "${myArray[*]}" # use the full array as one word
+Word -> 1st item 2nd item 3rd item 4th item
+$ printf 'Word -> %s\n' "${myArray[@]}" # use arrays entries
+Word -> 1st item
+Word -> 2nd item
+Word -> 3rd item
+Word -> 4th item
